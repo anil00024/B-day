@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrating CS Sucharitha Madam's Birthday</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ff9f43;
+            --dark: #2d4059;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Add Birthday Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s linear infinite;
+            z-index: 1000;
+        }
+
+        .birthday-hat {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            z-index: 10;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: pulse 3s infinite ease-in-out;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Enhanced About Section */
+        .section {
+            padding: 5rem 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-photo {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            transform: rotate(-3deg);
+            box-shadow: 15px 15px 0 var(--accent);
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .about-text {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .qualities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .quality-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            border-left: 4px solid var(--primary);
+        }
+
+        .quality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Gallery Section */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .photo-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 300px;
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .photo-card img, .photo-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Wishes Section */
+        .wishes-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .wish-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .input-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e05c5c;
+        }
+        
+        .wishes-list {
+            margin-top: 2rem;
+        }
+        
+        .wish-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .wish-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        /* Cake emoji */
+        .cake-emoji {
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .qualities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Sucharitha Madam!</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#video">Video</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <img src="" class="birthday-hat" alt="Birthday Hat">
+        <div class="hero-content">
+            <div class="floating" style="font-size: 6rem">🎂🎉</div>
+            <h1>Happy Birthday Sucharitha Madam!</h1>
+            <p style="font-size: 1.5rem; margin-top: 1rem">Celebrating Years of Excellence</p>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About The Celebrant 🎈</h2>
+        <div class="about-content">
+            <div class="about-photo">
+                <img src="img1.jpg" alt="Sucharitha Madam">
+            </div>
+            <div class="about-text">
+                <h3 style="color: var(--primary); margin-bottom: 1rem">Sucharitha Ma'am (CS)</h3>
+                <p>Celebrating <span class="cake-emoji">🎂</span> Wishing a very happy birthday🎉 to our wonderful computer teacher, Sucharitha Ma'am!✨ Your guidance, patience, and dedication have inspired us every day. May your special day be filled with joy, love, and all the success you truly deserve. Thank you for making learning a beautiful experience!</p>
+                
+               
+                    </div>
+                    <div class="quality-card">
+                        <h4>❤️H-B-day </h4>
+                        <p>"Once again Happy B-day CS ma'am. Good supporter. Meru mana Degree clg ki ochina 2Years 1st day nuuchi chala support ga positive ga treat chesaru as like mother laga.. health issues ochinapudu daily ela undhe ani aduguthu care chupicharu. 5th sem lo me subject fail ainaa positive ga respond ga support echaru. elaney inko 5Years me students vundam anukuna ah chance ledhu. naku all time Frvt teacher meru ma'am....H-B-Day CS ma'am   "</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <h2 class="section-title">College Moments 🎥</h2>
+        <div class="photo-grid">
+            <div class="photo-card">
+                <img src="photo1.jpg" alt="Celebration 1">
+            </div>
+            <div class="photo-card">
+                <img src="IMG-20250501-WA0004.jpg" alt="Celebration 2">
+            </div>
+            <div class="photo-card">
+                <img src="IMG-20250501-WA0010.jpg" alt="Celebration 3">
+            </div>
+            <div class="photo-card">
+                <img src="photo6.jpg" alt="Celebration 3">
+            </div>
+            <div class="photo-card">
+                <img src="photo5.jpg" alt="Celebration 3">
+            </div>
+            <div class="photo-card">
+                <img src="IMG-20250501-WA0012.jpg" alt="Celebration 4">
+            </div>
+        </div>
+    </section>
+    
+    <section id="video" class="section">
+        <h2 class="section-title">Memorable Moments 📹</h2>
+        <div class="memorable-moments">
+            <p style="margin-bottom: 20px; color: var(--dark); font-size: 1.2rem;">
+                Watch special birthday celebration moments of Sucharitha Madam! 👇📽️...
+            </p>
+            
+            <div class="play-btn">
+                <i class="fas fa-play" style="margin-right: 10px;"></i> Watch Celebration Video
+            </div>
+            
+            <p style="margin-top: 20px; color: var(--dark); font-style: italic;">
+                Click to view birthday celebration highlights
+            </p>
+        </div>
+        
+        <div class="video-container" id="videoContainer">
+            <video id="memoryVideo" controls>
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <span class="close-btn" onclick="closeVideo()">&times;</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>Created with ❤️ for Sucharitha Madam's Birthday</p>
+        <p>© 2025 Birthday Celebration</p>
+    </footer>
+
+    <!-- Add confetti elements -->
+    <div class="confetti" style="left: 10%; background: #ff6b6b"></div>
+    <div class="confetti" style="left: 30%; background: #4ecdc4"></div>
+    <div class="confetti" style="left: 50%; background: #ff9f43"></div>
+    <div class="confetti" style="left: 70%; background: #2e86de"></div>
+    <div class="confetti" style="left: 90%; background: #ff5252"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+    // Wait for DOM to fully load
+document.addEventListener('DOMContentLoaded', function() {
+    // Get references to elements
+    const playButton = document.querySelector('.play-btn');
+    const videoSection = document.getElementById('video');
+    
+    // Create video element directly in the memorable-moments section
+    const videoElement = document.createElement('video');
+    videoElement.id = 'memoryVideo';
+    videoElement.controls = true;
+    videoElement.style.display = 'none';
+    videoElement.style.width = '100%';
+    videoElement.style.maxWidth = '800px';
+    videoElement.style.margin = '20px auto';
+    videoElement.style.borderRadius = '10px';
+    videoElement.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+    
+    // Add source to video
+    const source = document.createElement('source');
+    source.src = 'video.mp4';
+    source.type = 'video/mp4';
+    videoElement.appendChild(source);
+    
+    // Add fallback text
+    videoElement.appendChild(document.createTextNode('Your browser does not support the video tag.'));
+    
+    // Find the memorable-moments div and append the video after the play button
+    const memorableMoments = document.querySelector('.memorable-moments');
+    memorableMoments.appendChild(videoElement);
+    
+    // Play button click handler
+    playButton.addEventListener('click', function() {
+        // Toggle play button and video visibility
+        if (videoElement.style.display === 'none') {
+            videoElement.style.display = 'block';
+            playButton.innerHTML = '<i class="fas fa-pause"></i> Pause Video';
+            playButton.style.background = 'linear-gradient(135deg, #f55, #911)';
+            videoElement.play();
+        } else {
+            if (videoElement.paused) {
+                videoElement.play();
+                playButton.innerHTML = '<i class="fas fa-pause"></i> Pause Video';
+                playButton.style.background = 'linear-gradient(135deg, #f55, #911)';
+            } else {
+                videoElement.pause();
+                playButton.innerHTML = '<i class="fas fa-play"></i> Resume Video';
+                playButton.style.background = 'linear-gradient(135deg, #5890ff, #3366cc)';
+            }
+        }
+    });
+    
+    // Add event listeners for video to update button text
+    videoElement.addEventListener('ended', function() {
+        playButton.innerHTML = '<i class="fas fa-redo"></i> Watch Again';
+        playButton.style.background = 'linear-gradient(135deg, #4ecdc4, #2e86de)';
+    });
+    
+    // Improve visual feedback for play button
+    playButton.addEventListener('mouseover', function() {
+        this.style.boxShadow = '0 5px 15px rgba(255, 82, 82, 0.4)';
+    });
+    
+    playButton.addEventListener('mouseout', function() {
+        this.style.boxShadow = 'none';
+    });
+    
+    // Set initial button style
+    playButton.innerHTML = '<i class="fas fa-play"></i> Watch Celebration Video';
+    playButton.style.display = 'inline-flex';
+    playButton.style.alignItems = 'center';
+    playButton.style.justifyContent = 'center';
+    playButton.style.padding = '15px 25px';
+    playButton.style.borderRadius = '50px';
+    playButton.style.background = 'linear-gradient(135deg, #ff9a9e 0%, #ff5252 100%)';
+    playButton.style.color = 'white';
+    playButton.style.fontWeight = 'bold';
+    playButton.style.cursor = 'pointer';
+    playButton.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+    playButton.style.transition = 'all 0.3s ease';
+});
+    </script>
+</body>
+</html>
